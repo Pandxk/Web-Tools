@@ -1,69 +1,68 @@
-import Image from "next/image";
+import Link from 'next/link';
+import AdSense from '@/components/AdSense';
+import { FileSpreadsheet, Image as ImageIcon, QrCode, Wand2 } from 'lucide-react';
+
+export const metadata = {
+  title: 'Free Web Tools - PDF, QR, Image Conversion',
+  description: 'A collection of free, privacy-first web tools that run locally in your browser.',
+};
 
 export default function Home() {
+  const tools = [
+    {
+      href: "/pdf-to-excel",
+      title: "PDF to Excel",
+      desc: "Extract tables from PDFs without uploading your files.",
+      icon: <FileSpreadsheet className="w-8 h-8 text-green-400" />
+    },
+    {
+      href: "/image-to-webp",
+      title: "Image to WebP",
+      desc: "Convert PNG/JPG to WebP for better web performance.",
+      icon: <ImageIcon className="w-8 h-8 text-blue-400" />
+    },
+    {
+      href: "/qr-generator",
+      title: "QR Generator",
+      desc: "Create custom QR codes with a center logo.",
+      icon: <QrCode className="w-8 h-8 text-purple-400" />
+    },
+    {
+      href: "/remove-background",
+      title: "Background Remover",
+      desc: "Remove image backgrounds using local AI (WASM).",
+      icon: <Wand2 className="w-8 h-8 text-yellow-400" />
+    }
+  ];
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.js
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+    <div className="space-y-12">
+      <div className="text-center space-y-4">
+        <h1 className="text-4xl font-bold text-white">Free, Private Web Tools</h1>
+        <p className="text-[#8a8a93] max-w-2xl mx-auto">
+          No uploads. No tracking. No limits. All processing is done locally in your browser.
+        </p>
+      </div>
+
+      <AdSense dataAdSlot="home-top-ad" />
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {tools.map((tool) => (
+          <Link href={tool.href} key={tool.title} className="block group">
+            <div className="border border-[#1e1e22] bg-[#121214] p-6 rounded-xl hover:border-[#3a3a44] transition-colors h-full flex flex-col items-start gap-4">
+              <div className="p-3 bg-[#1a1a1e] rounded-lg group-hover:bg-[#2a2a30] transition-colors">
+                {tool.icon}
+              </div>
+              <div>
+                <h2 className="text-xl font-bold text-white mb-2">{tool.title}</h2>
+                <p className="text-[#8a8a93]">{tool.desc}</p>
+              </div>
+            </div>
+          </Link>
+        ))}
+      </div>
+
+      <AdSense dataAdSlot="home-bottom-ad" />
     </div>
   );
 }

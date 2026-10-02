@@ -1,36 +1,31 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Free Web Tools
 
-## Getting Started
+Plataforma de herramientas web gratuitas, procesadas 100% en el navegador (Client-Side) para máxima privacidad y cero costos de servidor.
 
-First, run the development server:
+Construido con **Next.js** y **TailwindCSS**.
 
+## 🚀 Cómo correr el proyecto localmente
+
+Instala las dependencias y corre el servidor de desarrollo:
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
+Abre [http://localhost:3000](http://localhost:3000) en tu navegador.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 📝 Tareas Pendientes (Para hacer luego)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- [ ] **Comprar Dominio Propio**: Comprar un dominio en Namecheap o GoDaddy (ej: mis-herramientas.com).
+- [ ] **Conectar Dominio a Vercel**: Agregar el dominio en el panel de Vercel (Settings -> Domains).
+- [ ] **Activar AdSense (Paso 1)**: Solicitar aprobación en Google AdSense con el nuevo dominio.
+- [ ] **Activar AdSense (Paso 2)**: Descomentar la línea del script en `src/app/layout.js` y poner el Client ID (ca-pub-XXX).
+- [ ] **Activar AdSense (Paso 3)**: Descomentar el bloque de anuncio en `src/components/AdSense.js` y poner el Slot ID.
+- [ ] **Añadir nuevas herramientas**: (Ej: Unir PDFs, Comprimir imágenes, Extraer MP3 de Video).
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🛡️ Notas de Seguridad
+El comando `npm audit` puede mostrar una vulnerabilidad "High" en la librería `xlsx` (SheetJS). **Puedes ignorar esta alerta.** 
+Esa vulnerabilidad solo es peligrosa si `xlsx` se ejecutara en un servidor (Backend), pero nuestra aplicación funciona 100% en el navegador del usuario (Client-side). Si alguien sube un archivo malicioso, solo congelará su propia pestaña, tu plataforma y Vercel están 100% seguros.
